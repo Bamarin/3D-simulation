@@ -8,6 +8,7 @@ public class StateController : MonoBehaviour {
     public State curremtState;
     //public EnemyStats enemyStats;
     public Transform eyes;
+    public Transform root;
     public State remainState;
 
 
@@ -16,6 +17,7 @@ public class StateController : MonoBehaviour {
     public List<Transform> wayPointList;
     [HideInInspector] public int nextWayPoint;
     [HideInInspector] public Transform chaseTarget;
+    [HideInInspector] public Vector3 target;
 
 	private bool aiActive;
 
@@ -40,7 +42,7 @@ public class StateController : MonoBehaviour {
     //}
     void Start()
     {
-        navMeshAgent.SetDestination(wayPointList[0].position);
+        navMeshAgent.SetDestination(root.position);
         navMeshAgent.enabled = true;
     }
 
