@@ -18,7 +18,7 @@ public class LookDecision : Decision
         Debug.DrawRay(controller.eyes.position, controller.eyes.forward.normalized * 40, Color.green);
 
         if(Physics.SphereCast(controller.eyes.position, 1, controller.eyes.forward, out hit, 40)
-            && hit.collider.CompareTag("Player"))
+            && hit.collider.CompareTag("consumable"))
         {
             controller.chaseTarget = hit.transform;
             return true;
