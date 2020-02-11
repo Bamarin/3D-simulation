@@ -14,7 +14,7 @@ public class Spawner : MonoBehaviour
         players = new List<GameObject>();
         for(int i =0; i < 10; i++)
         {
-            players.Add(Instantiate(newPlayer, new Vector3(0, 0, 0), Quaternion.identity));
+            players.Add(Instantiate(newPlayer, new Vector3(0, 2, 0), Quaternion.identity));
         }
     }
     void Update()
@@ -23,7 +23,7 @@ public class Spawner : MonoBehaviour
         switch(randNum)
         {
             case 1:
-                players.Add(Instantiate(newPlayer, new Vector3(0, 0, 0), Quaternion.identity));
+                players.Add(Instantiate(newPlayer, new Vector3(0, 2, 0), Quaternion.identity));
                 break;
             case 0:
                 if (players.Count > 0)
