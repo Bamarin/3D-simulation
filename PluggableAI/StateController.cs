@@ -10,6 +10,8 @@ public class StateController : MonoBehaviour {
     public Transform eyes;
     public Transform root;
     public State remainState;
+    public float deathRate;
+    public float duplicationRate;
 
 
 	public NavMeshAgent navMeshAgent;
