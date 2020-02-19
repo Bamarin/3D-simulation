@@ -13,32 +13,27 @@ public class Spawner : MonoBehaviour
     private void Start()
     {
         spawnedEntities = new List<GameObject>();
-        //for(int i =0; i < 10; i++)
-        //{
-        //    spawnedEntities.Add(Instantiate(spawnable, new Vector3(0, 2, 0), Quaternion.identity));
-        //}
-        
-                spawnedEntities.Add(Instantiate(spawnable, GetRandomLocation(), Quaternion.identity));
+
 
     }
     void Update()
     {
-        //randNum = Random.Range(0, 99);
-        //switch(randNum)
-        //{
-        //    case 1:
-        //        spawnedEntities.Add(Instantiate(spawnable, GetRandomLocation(), Quaternion.identity));
-        //        break;
-        //    case 0:
-        //        if (spawnedEntities.Count > 0)
-        //        {
-        //            Despawn(spawnedEntities[0]);
-        //        }
-        //        break;
-        //    default:
-        //        break;
+        randNum = Random.Range(0, 999);
+        switch (randNum)
+        {
+            case 1:
+                spawnedEntities.Add(Instantiate(spawnable, GetRandomLocation(), Quaternion.identity));
+                break;
+            case 0:
+                if (spawnedEntities.Count > 0)
+                {
+                    Despawn(spawnedEntities[0]);
+                }
+                break;
+            default:
+                break;
 
-        //}
+        }
     }
 
     Vector3 GetRandomLocation()
