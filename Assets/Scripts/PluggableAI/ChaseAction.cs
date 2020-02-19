@@ -12,7 +12,14 @@ public class ChaseAction : Action
 
     private void Chase(StateController controller)
     {
-        controller.navMeshAgent.destination = controller.chaseTargetLocation.position;
+        try
+        {
+            controller.navMeshAgent.destination = controller.chaseTargetLocation.position;
+        }
+        catch (MissingReferenceException)
+        {
+            controller.curremtState = controller.curremtState.transitions[0].falseState;
+        }
         controller.navMeshAgent.isStopped = false;
     }
 }

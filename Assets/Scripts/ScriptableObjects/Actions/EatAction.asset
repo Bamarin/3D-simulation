@@ -10,5 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f141114161848a5409884e9c3fb6cfec, type: 3}
-  m_Name: New Eat Action
+  m_Name: EatAction
   m_EditorClassIdentifier: 
+  food: {fileID: 7760273125121617017, guid: 6d22a52a996efbc4e9e1f6d6ffe5be96, type: 3}
