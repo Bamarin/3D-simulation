@@ -6,37 +6,39 @@ using UnityEngine.AI;
 public class Spawner : MonoBehaviour
 {
     // Reference to the Prefab. Drag a Prefab into this field in the Inspector.
-    public GameObject newPlayer;
+    public GameObject spawnable;
     private int randNum;
-    private List<GameObject> players;
+    private static List<GameObject> spawnedEntities;
 
     private void Start()
     {
-        players = new List<GameObject>();
-        for(int i =0; i < 10; i++)
-        {
-            players.Add(Instantiate(newPlayer, new Vector3(0, 2, 0), Quaternion.identity));
-        }
+        spawnedEntities = new List<GameObject>();
+        //for(int i =0; i < 10; i++)
+        //{
+        //    spawnedEntities.Add(Instantiate(spawnable, new Vector3(0, 2, 0), Quaternion.identity));
+        //}
+        
+                spawnedEntities.Add(Instantiate(spawnable, GetRandomLocation(), Quaternion.identity));
+
     }
     void Update()
     {
-        randNum = Random.Range(0, 99);
-        switch(randNum)
-        {
-            case 1:
-                players.Add(Instantiate(newPlayer, GetRandomLocation(), Quaternion.identity));
-                break;
-            case 0:
-                if (players.Count > 0)
-                {
-                    Destroy(players[0]);
-                    players.RemoveAt(0);
-                }
-                break;
-            default:
-                break;
+        //randNum = Random.Range(0, 99);
+        //switch(randNum)
+        //{
+        //    case 1:
+        //        spawnedEntities.Add(Instantiate(spawnable, GetRandomLocation(), Quaternion.identity));
+        //        break;
+        //    case 0:
+        //        if (spawnedEntities.Count > 0)
+        //        {
+        //            Despawn(spawnedEntities[0]);
+        //        }
+        //        break;
+        //    default:
+        //        break;
 
-        }
+        //}
     }
 
     Vector3 GetRandomLocation()
@@ -53,4 +55,9 @@ public class Spawner : MonoBehaviour
         return point;
     }
 
+    public static void Despawn(GameObject entity)
+    {
+        Destroy(entity);
+        spawnedEntities.Remove(entity);
+    }
 }

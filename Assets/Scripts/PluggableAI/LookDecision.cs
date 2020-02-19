@@ -20,7 +20,8 @@ public class LookDecision : Decision
         if(Physics.SphereCast(controller.eyes.position, 1, controller.eyes.forward, out hit, 40)
             && hit.collider.CompareTag("consumable"))
         {
-            controller.chaseTarget = hit.transform;
+            controller.chaseTarget = hit.collider.gameObject;
+            controller.chaseTargetLocation = hit.transform;
             return true;
         }
         else { return false; }
