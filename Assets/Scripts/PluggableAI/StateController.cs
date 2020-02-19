@@ -8,7 +8,6 @@ public class StateController : MonoBehaviour {
     public State curremtState;
     //public EnemyStats enemyStats;
     public Transform eyes;
-    public Transform root;
     public State remainState;
     public float deathRate;
     public float duplicationRate;
@@ -44,7 +43,7 @@ public class StateController : MonoBehaviour {
     //}
     void Start()
     {
-        navMeshAgent.SetDestination(root.position);
+        navMeshAgent.SetDestination(transform.position);
         navMeshAgent.enabled = true;
     }
 
@@ -71,4 +70,17 @@ public class StateController : MonoBehaviour {
             curremtState = nextState;
         }
     }
+    public Vector3 RandomNavmeshLocation(StateController controller, float radius)
+    {
+        Vector3 randomDirection = Random.insideUnitSphere * radius;
+        randomDirection += transform.position;
+        NavMeshHit hit;
+        Vector3 finalPosition = Vector3.zero;
+        if (NavMesh.SamplePosition(randomDirection, out hit, radius, 1))
+        {
+            finalPosition = hit.position;
+        }
+        return finalPosition;
+    }
+
 }

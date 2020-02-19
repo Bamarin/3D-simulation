@@ -16,20 +16,9 @@ public class WanderAction : Action
         if(controller.navMeshAgent.remainingDistance <= controller.navMeshAgent.stoppingDistance && !controller.navMeshAgent.pathPending)
         {
             //controller.nextWayPoint = (controller.nextWayPoint + 1) % controller.wayPointList.Count;
-            controller.navMeshAgent.SetDestination(RandomNavmeshLocation(controller, 8f));
+            controller.navMeshAgent.SetDestination(controller.RandomNavmeshLocation(controller, 8f));
         }
 
     }
-    public Vector3 RandomNavmeshLocation(StateController controller, float radius)
-    {
-        Vector3 randomDirection = Random.insideUnitSphere * radius;
-        randomDirection += controller.root.position;
-        NavMeshHit hit;
-        Vector3 finalPosition = Vector3.zero;
-        if (NavMesh.SamplePosition(randomDirection, out hit, radius, 1))
-        {
-            finalPosition = hit.position;
-        }
-        return finalPosition;
-    }
+    
 }
