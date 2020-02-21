@@ -24,12 +24,6 @@ public class Spawner : MonoBehaviour
             case 1:
                 spawnedEntities.Add(Instantiate(spawnable, GetRandomLocation(), Quaternion.identity));
                 break;
-            case 0:
-                if (spawnedEntities.Count > 0)
-                {
-                    Despawn(spawnedEntities[0]);
-                }
-                break;
             default:
                 break;
 
