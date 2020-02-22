@@ -9,11 +9,14 @@ public class Spawner : MonoBehaviour
     public GameObject spawnable;
     private int randNum;
     private static List<GameObject> spawnedEntities;
+    private Vector3 blenderRotation;
+    private Vector3 brainOff;
 
     private void Start()
     {
         spawnedEntities = new List<GameObject>();
-
+        blenderRotation = new Vector3(-90, 0, 0);
+        brainOff = new Vector3(0f, 0.365f, 0f);
 
     }
     void Update()
@@ -22,7 +25,7 @@ public class Spawner : MonoBehaviour
         switch (randNum)
         {
             case 1:
-                spawnedEntities.Add(Instantiate(spawnable, GetRandomLocation(), Quaternion.identity));
+                spawnedEntities.Add(Instantiate(spawnable, GetRandomLocation()+brainOff,Quaternion.Euler(blenderRotation)));
                 break;
             default:
                 break;
