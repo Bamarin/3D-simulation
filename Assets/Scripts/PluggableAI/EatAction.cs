@@ -16,6 +16,7 @@ public class EatAction : Action
     {
         if (controller.navMeshAgent.remainingDistance <= (food.GetComponent<SphereCollider>().radius)+1 && !controller.navMeshAgent.pathPending && controller.chaseTargetLocation != null)
         {
+            controller.animator.SetBool("IsWalking", false);
             Spawner.Despawn(controller.chaseTarget);
         }
     }

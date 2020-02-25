@@ -11,6 +11,7 @@ public class StateController : MonoBehaviour {
     public State remainState;
     public float deathRate;
     public float duplicationRate;
+    public Animator animator;
 
 
 	public NavMeshAgent navMeshAgent;
@@ -28,6 +29,7 @@ public class StateController : MonoBehaviour {
 	{
         //tankShooting = GetComponent<Complete.TankShooting>();
         navMeshAgent = GetComponent<NavMeshAgent> ();
+        animator = GetComponent<Animator> ();
 	}
 
     //public void SetupAI(bool aiActivationFromTankManager, List<Transform> wayPointsFromTankManager)
