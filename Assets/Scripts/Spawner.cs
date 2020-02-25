@@ -6,17 +6,24 @@ using UnityEngine.AI;
 public class Spawner : MonoBehaviour
 {
     // Reference to the Prefab. Drag a Prefab into this field in the Inspector.
-    public GameObject spawnable;
+    public GameObject food;
+    public GameObject monster;
     private int randNum;
-    private static List<GameObject> spawnedEntities;
+    private static List<GameObject> Brains;
+    private static List<GameObject> Monsters;
     private Vector3 blenderRotation;
     private Vector3 brainOff;
 
     private void Start()
     {
-        spawnedEntities = new List<GameObject>();
+        Brains = new List<GameObject>();
+        Monsters = new List<GameObject>();
         blenderRotation = new Vector3(-90, 0, 0);
         brainOff = new Vector3(0f, 0.365f, 0f);
+        for(int i=0; i<5; i++)
+        {
+            Monsters.Add(Instantiate(monster, GetRandomLocation(), Quaternion.identity));
+        }
 
     }
     void Update()
@@ -25,7 +32,7 @@ public class Spawner : MonoBehaviour
         switch (randNum)
         {
             case 1:
-                spawnedEntities.Add(Instantiate(spawnable, GetRandomLocation()+brainOff,Quaternion.Euler(blenderRotation)));
+                Brains.Add(Instantiate(food, GetRandomLocation()+brainOff,Quaternion.Euler(blenderRotation)));
                 break;
             default:
                 break;
@@ -50,6 +57,6 @@ public class Spawner : MonoBehaviour
     public static void Despawn(GameObject entity)
     {
         Destroy(entity);
-        spawnedEntities.Remove(entity);
+        Brains.Remove(entity);
     }
 }

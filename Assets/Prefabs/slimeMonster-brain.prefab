@@ -329,11 +329,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7aaa7bb6b9384548b1e290d925e3732, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  curremtState: {fileID: 0}
+  curremtState: {fileID: 11400000, guid: ea49a412a4acb8b44874adb6d06dde7a, type: 2}
   eyes: {fileID: 8368327682580175430}
-  remainState: {fileID: 0}
+  remainState: {fileID: 11400000, guid: 7f305e99359f7be43ba7c6c819f712b3, type: 2}
   deathRate: 0
   duplicationRate: 0
+  myBrain: {fileID: 0}
   animator: {fileID: 6876308190277766081}
   navMeshAgent: {fileID: 7538102876100676802}
   wayPointList: []

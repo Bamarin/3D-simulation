@@ -16,7 +16,7 @@ public class WanderAction : Action
         if(controller.navMeshAgent.remainingDistance <= controller.navMeshAgent.stoppingDistance && !controller.navMeshAgent.pathPending)
         {
             //controller.nextWayPoint = (controller.nextWayPoint + 1) % controller.wayPointList.Count;
-            controller.navMeshAgent.SetDestination(controller.RandomNavmeshLocation(controller, 8f));
+            controller.navMeshAgent.SetDestination(controller.RandomNavmeshLocation(controller, 20f));
         }
 
     }

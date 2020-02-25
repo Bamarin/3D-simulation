@@ -22,6 +22,12 @@ PrefabInstance:
       propertyPath: myBrain
       value: 
       objectReference: {fileID: 8966271600473594301}
+    - target: {fileID: 2092599890883991865, guid: db45d9e225d5ac144a40810eb10ee0e4,
+        type: 3}
+      propertyPath: curremtState
+      value: 
+      objectReference: {fileID: 11400000, guid: 9ac1f636ebd91d543acf11df70ef256d,
+        type: 2}
     - target: {fileID: 3077994050871812131, guid: db45d9e225d5ac144a40810eb10ee0e4,
         type: 3}
       propertyPath: m_LocalPosition.x
