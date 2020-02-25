@@ -11,10 +11,11 @@ public class StateController : MonoBehaviour {
     public State remainState;
     public float deathRate;
     public float duplicationRate;
-    public Animator animator;
+    public GameObject myBrain;
 
 
-	public NavMeshAgent navMeshAgent;
+    [HideInInspector] public Animator animator;
+	[HideInInspector] public NavMeshAgent navMeshAgent;
     //[HideInInspector] public Complete.TankShooting tankShooting;
     public List<Transform> wayPointList;
     [HideInInspector] public int nextWayPoint;

@@ -18,6 +18,7 @@ public class EatAction : Action
         {
             controller.animator.SetBool("IsWalking", false);
             Spawner.Despawn(controller.chaseTarget);
+            controller.myBrain.GetComponent<MeshRenderer>().enabled=true;
         }
     }
 }
