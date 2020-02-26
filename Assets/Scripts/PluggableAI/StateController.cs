@@ -12,8 +12,7 @@ public class StateController : MonoBehaviour {
     public float deathRate;
     public float duplicationRate;
     public GameObject myBrain;
-
-
+    
     [HideInInspector] public Animator animator;
 	[HideInInspector] public NavMeshAgent navMeshAgent;
     //[HideInInspector] public Complete.TankShooting tankShooting;
@@ -22,6 +21,7 @@ public class StateController : MonoBehaviour {
     [HideInInspector] public GameObject chaseTarget;
     [HideInInspector] public Transform chaseTargetLocation;
     [HideInInspector] public Vector3 target;
+    [HideInInspector] public float stateTimeElapsed;
 
 	private bool aiActive;
 
@@ -72,8 +72,21 @@ public class StateController : MonoBehaviour {
         if(nextState != remainState)
         {
             curremtState = nextState;
+            OnExitState();
         }
     }
+
+    public bool CheckIfCountDownElapsed(float duration)
+    {
+        stateTimeElapsed += Time.deltaTime;
+        return (stateTimeElapsed >= duration);
+    }
+
+    private void OnExitState()
+    {
+        //stateTimeElapsed = 0;
+    }
+
     public Vector3 RandomNavmeshLocation(StateController controller, float radius)
     {
         Vector3 randomDirection = Random.insideUnitSphere * radius;

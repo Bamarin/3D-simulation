@@ -17,8 +17,16 @@ public class EatAction : Action
         if (controller.navMeshAgent.remainingDistance <= (food.GetComponent<SphereCollider>().radius)+1 && !controller.navMeshAgent.pathPending && controller.chaseTargetLocation != null)
         {
             controller.animator.SetBool("IsWalking", false);
-            Spawner.Despawn(controller.chaseTarget);
+            Spawner.DespawnFood(controller.chaseTarget);
+            controller.stateTimeElapsed = 0;
+            if(controller.gameObject.tag == "smart")
+            {
+                controller.myBrain.GetComponent<MeshRenderer>().enabled=false;
+                controller.gameObject.tag = "stupid";
+                Spawner.Duplicate(controller);
+            }
             controller.myBrain.GetComponent<MeshRenderer>().enabled=true;
+            controller.gameObject.tag = "smart";
         }
     }
 }

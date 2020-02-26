@@ -51,7 +51,7 @@ GameObject:
   - component: {fileID: 1943584888599202386}
   m_Layer: 0
   m_Name: brain.Low
-  m_TagString: Untagged
+  m_TagString: consumable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -224,7 +224,7 @@ GameObject:
   - component: {fileID: 2092599890883991865}
   m_Layer: 0
   m_Name: slimeMonster-brain
-  m_TagString: Untagged
+  m_TagString: smart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -332,7 +332,7 @@ MonoBehaviour:
   curremtState: {fileID: 11400000, guid: ea49a412a4acb8b44874adb6d06dde7a, type: 2}
   eyes: {fileID: 8368327682580175430}
   remainState: {fileID: 11400000, guid: 7f305e99359f7be43ba7c6c819f712b3, type: 2}
-  deathRate: 0
+  deathRate: 15
   duplicationRate: 0
   myBrain: {fileID: 0}
   animator: {fileID: 6876308190277766081}
@@ -342,6 +342,7 @@ MonoBehaviour:
   chaseTarget: {fileID: 0}
   chaseTargetLocation: {fileID: 0}
   target: {x: 0, y: 0, z: 0}
+  stateTimeElapsed: 0
 --- !u!1 &2548840967274550610
 GameObject:
   m_ObjectHideFlags: 0

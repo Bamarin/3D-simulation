@@ -10,9 +10,9 @@ public class Spawner : MonoBehaviour
     public GameObject monster;
     private int randNum;
     private static List<GameObject> Brains;
-    private static List<GameObject> Monsters;
-    private Vector3 blenderRotation;
-    private Vector3 brainOff;
+    public static List<GameObject> Monsters;
+    private static Vector3 blenderRotation;
+    private static Vector3 brainOff;
 
     private void Start()
     {
@@ -54,9 +54,25 @@ public class Spawner : MonoBehaviour
         return point;
     }
 
-    public static void Despawn(GameObject entity)
+
+    public static void DespawnFood(GameObject food)
     {
-        Destroy(entity);
-        Brains.Remove(entity);
+        Destroy(food);
+        Brains.Remove(food);
+    }
+    public static void Kill(StateController controller)
+    {
+        GameObject monster = controller.gameObject;
+        if (monster.tag == "smart")
+        {
+            controller.myBrain.GetComponent<SphereCollider>().enabled = true;
+            Brains.Add(Instantiate(controller.myBrain, monster.transform.position + brainOff, monster.transform.rotation*Quaternion.Euler(blenderRotation)));
+        }
+        Destroy(monster);
+        Monsters.Remove(monster);
+    }
+    public static void Duplicate(StateController controller)
+    {
+        Monsters.Add(Instantiate(controller.gameObject, controller.gameObject.transform.position, controller.gameObject.transform.rotation));
     }
 }

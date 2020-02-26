@@ -19,6 +19,13 @@ public class WanderAction : Action
             controller.navMeshAgent.SetDestination(controller.RandomNavmeshLocation(controller, 20f));
         }
 
+        if (controller.CheckIfCountDownElapsed(controller.deathRate))
+        {
+            controller.animator.SetBool("IsDead", true);
+            controller.navMeshAgent.isStopped = true;
+            
+        }
+
     }
     
 }
