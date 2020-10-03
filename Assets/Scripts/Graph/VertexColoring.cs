@@ -39,7 +39,7 @@ public class VertexColoring : MonoBehaviour
 
             ptile = (float)heatMap[x, y] / maxHeat;
 
-            colors[i] = Color32.Lerp(Color.black, Color.white, ptile);
+            colors[i] = Color32.Lerp(Color.black, Color.green, ptile);
             //Debug.Log(ptile);
         }
 
