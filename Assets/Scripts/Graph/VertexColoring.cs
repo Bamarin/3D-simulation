@@ -5,13 +5,15 @@ using UnityEngine;
 
 public class VertexColoring : MonoBehaviour
 {
-    public static int[,] vertexValue = new int[65, 65];
+    public static uint[,] heatMap = new uint[65, 65];
+    public static uint maxHeat = 10;
 
     private static Mesh mesh;
     private static Vector3[] vertices;
     private static Color32[] colors;
 
     private int x, y;
+    private float ptile;
 
     // Start is called before the first frame update
     void Start()
@@ -32,16 +34,13 @@ public class VertexColoring : MonoBehaviour
     {
         for (int i = 0; i < vertices.Length; i++)
         {
-            x = Mathf.RoundToInt(vertices[i].x*64);
-            y = Mathf.RoundToInt(vertices[i].y*64);
+            x = Mathf.RoundToInt(vertices[i].x * 64);
+            y = Mathf.RoundToInt(vertices[i].y * 64);
 
-            //Debug.Log("i:" + i / 65 + " j:" + i % 65 + " value:" + vertexValue[i / 65, i % 65]);
-            if (vertexValue[x,y] == 1)
-            {
-                colors[i] = Color.red;
-                //colors[i] = Color32.Lerp(Color.red, Color.green, vertices[i].y);
-                //Debug.Log("x:" + x + "; y:" + y + "; z:" + vertices[i].z);
-            }
+            ptile = (float)heatMap[x, y] / maxHeat;
+
+            colors[i] = Color32.Lerp(Color.black, Color.white, ptile);
+            //Debug.Log(ptile);
         }
 
         // assign the array of colors to the Mesh.

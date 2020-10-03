@@ -59,7 +59,7 @@ public class StateController : MonoBehaviour {
         curremtState.UpdateState(this);
         i = (int)Math.Round((transform.position.z / 40 + 0.5) * 64);
         j = (int)Math.Round((transform.position.x / 40 + 0.5) * 64);
-        VertexColoring.vertexValue[i, j]=1;
+        VertexColoring.maxHeat = ++VertexColoring.heatMap[i, j] > VertexColoring.maxHeat ? VertexColoring.heatMap[i, j] : VertexColoring.maxHeat;
     }
 
     private void OnDrawGizmos()
