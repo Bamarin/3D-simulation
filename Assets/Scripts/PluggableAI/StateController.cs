@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -24,6 +24,7 @@ public class StateController : MonoBehaviour {
     [HideInInspector] public float stateTimeElapsed;
 
 	private bool aiActive;
+    private int i, j;
 
 
 	void Awake () 
@@ -56,6 +57,9 @@ public class StateController : MonoBehaviour {
         //if (!aiActive)
         //    return;
         curremtState.UpdateState(this);
+        i = (int)Math.Round((transform.position.z / 40 + 0.5) * 64);
+        j = (int)Math.Round((transform.position.x / 40 + 0.5) * 64);
+        VertexColoring.vertexValue[i, j]=1;
     }
 
     private void OnDrawGizmos()
@@ -89,7 +93,7 @@ public class StateController : MonoBehaviour {
 
     public Vector3 RandomNavmeshLocation(StateController controller, float radius)
     {
-        Vector3 randomDirection = Random.insideUnitSphere * radius;
+        Vector3 randomDirection = UnityEngine.Random.insideUnitSphere * radius;
         randomDirection += transform.position;
         NavMeshHit hit;
         Vector3 finalPosition = Vector3.zero;
