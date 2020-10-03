@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -23,14 +24,18 @@ public class StateController : MonoBehaviour {
     [HideInInspector] public float stateTimeElapsed;
 
 	private bool aiActive;
+    private int i, j;
 
 
-	void Awake () 
+    void Awake () 
 	{
         //tankShooting = GetComponent<Complete.TankShooting>();
         navMeshAgent = GetComponent<NavMeshAgent> ();
         animator = GetComponent<Animator> ();
-	}
+        i = (int)Math.Round((transform.position.z / 40 + 0.5) * 64);
+        j = (int)Math.Round((transform.position.x / 40 + 0.5) * 64);
+        VertexColoring.spawnMap[i, j] = 1;
+    }
 
     //public void SetupAI(bool aiActivationFromTankManager, List<Transform> wayPointsFromTankManager)
     //{
@@ -88,7 +93,7 @@ public class StateController : MonoBehaviour {
 
     public Vector3 RandomNavmeshLocation(StateController controller, float radius)
     {
-        Vector3 randomDirection = Random.insideUnitSphere * radius;
+        Vector3 randomDirection = UnityEngine.Random.insideUnitSphere * radius;
         randomDirection += transform.position;
         NavMeshHit hit;
         Vector3 finalPosition = Vector3.zero;

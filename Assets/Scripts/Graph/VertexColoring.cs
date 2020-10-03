@@ -5,15 +5,20 @@ using UnityEngine;
 
 public class VertexColoring : MonoBehaviour
 {
+    public HeatMapType heatMapType;
     public static uint[,] heatMap = new uint[65, 65];
+    public static uint[,] deathMap = new uint[65, 65];
+    public static uint[,] spawnMap = new uint[65, 65];
     public static uint maxHeat = 10;
 
-    private static Mesh mesh;
-    private static Vector3[] vertices;
-    private static Color32[] colors;
+    private Mesh mesh;
+    private Vector3[] vertices;
+    private Color32[] colors;
 
     private int x, y;
     private float ptile;
+
+    public enum HeatMapType { mostVisited, spawn, death };
 
     // Start is called before the first frame update
     void Start()
@@ -37,10 +42,22 @@ public class VertexColoring : MonoBehaviour
             x = Mathf.RoundToInt(vertices[i].x * 64);
             y = Mathf.RoundToInt(vertices[i].y * 64);
 
-            ptile = (float)heatMap[x, y] / maxHeat;
+            switch (heatMapType){
 
-            colors[i] = Color32.Lerp(Color.black, Color.green, ptile);
-            //Debug.Log(ptile);
+                case HeatMapType.mostVisited:
+                    ptile = (float)heatMap[x, y] / maxHeat;
+                    colors[i] = Color32.Lerp(Color.blue, Color.yellow, ptile);
+                    break;
+
+                case HeatMapType.spawn:
+                    colors[i] = Color32.Lerp(Color.black, Color.green, spawnMap[x,y]);
+                    break;
+
+                case HeatMapType.death:
+                    colors[i] = Color32.Lerp(Color.black, Color.red, deathMap[x, y]);
+                    break;
+            }
+
         }
 
         // assign the array of colors to the Mesh.

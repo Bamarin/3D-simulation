@@ -25,7 +25,9 @@ public class WanderAction : Action
         {
             controller.animator.SetBool("IsDead", true);
             controller.navMeshAgent.isStopped = true;
-            
+            i = (int)Math.Round((controller.transform.position.z / 40 + 0.5) * 64);
+            j = (int)Math.Round((controller.transform.position.x / 40 + 0.5) * 64);
+            VertexColoring.deathMap[i, j] = 1;
         }
         else
         {
