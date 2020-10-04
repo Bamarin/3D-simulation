@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 public class VertexColoring : MonoBehaviour
 {
@@ -17,8 +17,20 @@ public class VertexColoring : MonoBehaviour
 
     private int x, y;
     private float ptile;
+    private static bool autoValue = true;
+    private static float val = 1f;
 
     public enum HeatMapType { mostVisited, spawn, death };
+
+    public static void toggleAutoValue()
+    {
+        autoValue = !autoValue;
+    }
+
+    public static void updateValue(float value)
+    {
+        val = value;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -45,7 +57,10 @@ public class VertexColoring : MonoBehaviour
             switch (heatMapType){
 
                 case HeatMapType.mostVisited:
-                    ptile = (float)heatMap[x, y] / maxHeat;
+                    if (autoValue)
+                        ptile = (float)heatMap[x, y] / maxHeat;
+                    else
+                        ptile = heatMap[x, y] / val;
                     colors[i] = Color32.Lerp(Color.blue, Color.yellow, ptile);
                     break;
 
